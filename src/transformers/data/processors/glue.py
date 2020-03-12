@@ -213,9 +213,12 @@ class BoolQ(DataProcessor):
             if i == 0:
                 continue
             guid = "%s-%s" % (set_type, line[0])
-            text_a = line[1]
-            text_b = line[2]
-            label = line[-1]
+            try:
+                text_a = line[1]
+                text_b = line[2]
+                label = line[3]
+            except IndexError:
+                continue
             examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
         return examples
 

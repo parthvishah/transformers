@@ -180,12 +180,26 @@ class BoolQ(DataProcessor):
         )
 
     def get_train_examples(self, data_dir):
+        input_file = str(os.path.join(data_dir,'train.jsonl'))
+        
         """See base class."""
-        return self._create_examples(self.read_json(os.path.join(data_dir, "train.jsonl")), "train")
+        list1 = []
+        for line in open(data_dir,'r', encoding="utf-8-sig"):
+            list1.append(json.loads(line))
+
+        return self._create_examples(lines=list1, set_type = "train")
 
     def get_dev_examples(self, data_dir):
+        input_file = str(os.path.join(data_dir,"val.jsonl"))
+        
         """See base class."""
-        return self._create_examples(self.read_json(os.path.join(data_dir, "val.jsonl")), "val")
+        list1 = []
+        for line in open(data_dir,'r', encoding="utf-8-sig"):
+            list1.append(json.loads(line))
+
+        return self._create_examples(lines=list1, set_type = "dev")
+        """See base class."""
+        return self._create_examples(lines=list1, set_type = "dev")
 
     def get_labels(self):
         """See base class."""

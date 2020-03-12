@@ -184,7 +184,7 @@ class BoolQ(DataProcessor):
         
         """See base class."""
         list1 = []
-        for line in open(data_dir,'r', encoding="utf-8-sig"):
+        for line in open(input_file,'r', encoding="utf-8-sig"):
             list1.append(json.loads(line))
 
         return self._create_examples(lines=list1, set_type = "train")
@@ -194,7 +194,7 @@ class BoolQ(DataProcessor):
         
         """See base class."""
         list1 = []
-        for line in open(data_dir,'r', encoding="utf-8-sig"):
+        for line in open(input_file,'r', encoding="utf-8-sig"):
             list1.append(json.loads(line))
 
         return self._create_examples(lines=list1, set_type = "dev")

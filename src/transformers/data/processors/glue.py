@@ -212,11 +212,11 @@ class BoolQ(DataProcessor):
         for (i, line) in enumerate(lines):
             if i == 0:
                 continue
-            guid = "%s-%s" % (set_type, line[0])
+            guid = "%s-%s" % (set_type, line['idx'])
             try:
-                text_a = line[1]
-                text_b = line[2]
-                label = line[3]
+                text_a = line['question']
+                text_b = line['passage']
+                label = line['label']
             except IndexError:
                 continue
             examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
